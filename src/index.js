@@ -1,17 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+const { ApolloServer } = require('apollo-server')
+const { typeDefs } = require('./schema')
+const { resolvers } = require('./resolvers')
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const port = process.env.PORT || 9999;
+const corsOptions = {
+    origin: "*",
+    credentials: true
+  };
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const server = new ApolloServer({ resolvers, typeDefs, corsOptions: corsOptions});
+
+server.listen({ port }, () => console.log(`Server runs at: http://localhost:${port}`));

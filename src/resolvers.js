@@ -1,7 +1,7 @@
 // node-graphql/src/resolvers.js
 
-const { students } =  require('./database.js');
-
+// const { students } =  require('./database.js');
+const { prisma } = require("./database.js");
 const resolvers = {
 
     Student: {
@@ -13,22 +13,36 @@ const resolvers = {
       },
 
     Query: {
-      students: () => students,
+      students: () => prisma.student.findMany(),
       student: (parent, args) => {
-        return students.find((student) => student.id === Number(args.id))
+        return prisma.student.findFirst({
+          where: { id: Number(args.id) },
+        });
       },
     },
 
     Mutation: {
       registerStudent: (parent, args) => {
-        students.push({
-          id: students.length + 1,
-          firstName: args.firstName,
-          lastName: args.lastName,
-          phoneNumber: args.phoneNumber,
-          recordedDateTime: Date.now(),
+        return prisma.student.create({
+          data: {
+            firstName: args.firstName,
+            lastName: args.lastName,
+            phoneNumber: args.phoneNumber,
+          },
         })
-        return students[students.length - 1]
+      },
+      updateStudent: (parent, args) => {
+        return prisma.student.update({
+          where: {
+            id: Number(args.id),
+          },
+          data: {
+            firstName: args.firstName,
+            lastName: args.lastName,
+            phoneNumber: args.phoneNumber,
+            recordedDateTime: new Date(),
+          },
+        });
       },
     },
 

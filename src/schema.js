@@ -17,6 +17,7 @@ const typeDefs = gql`
 
   type Mutation {
     registerStudent(firstName: String, lastName: String, phoneNumber: String): Student!
+    updateStudent(id: ID!, firstName: String, lastName: String, phoneNumber: String): Student!
   }
 `
 module.exports = {

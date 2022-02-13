@@ -51,9 +51,8 @@ npx prisma db seed
 npm start
 ```
 6. Interactive Apollo Server will be launched at :
-```
-http:\\localhost:9999
-```
+http://localhost:9999
+
 
 # Backend: JSON server 
 (To be removed once GraphQL is successfully linked to react-admin)
@@ -66,9 +65,8 @@ cd json-server
 json-server --watch db.json
 ```
 3. Server will be launched at:
-```
-http:\\localhost:9998
-```
+http://localhost:9998
+
 
 # Frontend: React-Admin 
 1. Navigate into `react-admin`
@@ -83,7 +81,8 @@ yarn install
 ```
 yarn start
 ```
-4. Start managing students!
+4. Start managing students at:
+http://localhost:3000
 
 Added features of React-Admin that has been used:
 - Pre-built `login page`, `create forms`, `edit forms` and `dashboard` 

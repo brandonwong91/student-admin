@@ -59,7 +59,7 @@ json-server --watch db.json
 ```
 3. Server will be launched at:
 ```
-http:\\localshot:9998
+http:\\localhost:9998
 ```
 
 # Frontend: React-Admin 

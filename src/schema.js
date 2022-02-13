@@ -11,15 +11,17 @@ const typeDefs = gql`
   }
 
   type Query {
-    students: [Student]
-    student(id: ID!): Student
+    allStudents: [Student]
+    Student(id: ID!): Student
   }
 
   type Mutation {
-    registerStudent(firstName: String, lastName: String, phoneNumber: String): Student!
-    updateStudent(id: ID!, firstName: String, lastName: String, phoneNumber: String): Student!
+    createStudent(firstName: String, lastName: String, phoneNumber: String): Student
+    updateStudent(id: ID!, firstName: String, lastName: String, phoneNumber: String): Student
+    deleteStudent(id: ID!): Student
   }
 `
+
 module.exports = {
   typeDefs,
 }

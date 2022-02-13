@@ -13,8 +13,8 @@ const resolvers = {
       },
 
     Query: {
-      students: () => prisma.student.findMany(),
-      student: (parent, args) => {
+      allStudents: () => prisma.student.findMany(),
+      Student: (parent, args) => {
         return prisma.student.findFirst({
           where: { id: Number(args.id) },
         });
@@ -22,7 +22,7 @@ const resolvers = {
     },
 
     Mutation: {
-      registerStudent: (parent, args) => {
+      createStudent: (parent, args) => {
         return prisma.student.create({
           data: {
             firstName: args.firstName,
@@ -41,6 +41,13 @@ const resolvers = {
             lastName: args.lastName,
             phoneNumber: args.phoneNumber,
             recordedDateTime: new Date(),
+          },
+        });
+      },
+      deleteStudent: (parent, args) => {
+        return prisma.student.delete({
+          where: {
+            id: Number(args.id),
           },
         });
       },

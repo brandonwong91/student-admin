@@ -42,7 +42,15 @@ docker-compose up -d
 ```
 npx prisma migrate dev
 ```
-4. Interactive Apollo Server will be launched at :
+4. Run seed command:
+```
+npx prisma db seed
+```
+5. Run the server :
+```
+npm start
+```
+6. Interactive Apollo Server will be launched at :
 ```
 http:\\localhost:9999
 ```
